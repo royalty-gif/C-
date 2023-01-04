@@ -47,11 +47,13 @@ private:
     void rmDup(ListNode* head) {
         if(head) {
             rmDup(head->next);  // 删除子链表重复节点
-            rmDup(head->next, head->val); // 删除与head重复的其他节点
+            // 两种实现方式都可以
+            //rmDup(head->next, head->val); // 删除与head重复的其他节点
+            rmDupRecursive(head->next, head->val);
         }
     }
 
-    void rmDup(ListNode*& head, int v) {
+    void rmDup(ListNode*& head, int v) { // 循环遍历的方式
         if( head ) {
             ListNode* pre = nullptr;
             ListNode* slider = head;
@@ -76,6 +78,22 @@ private:
                     pre = slider;
                     slider = slider->next;
                 }
+            }
+        }
+    }
+
+    void rmDupRecursive(ListNode*& head, int v) {  // 递归方式的实现
+        if(head) {
+            if(head->val == v) {
+                ListNode* toDel = head;
+
+                head = head->next;
+
+                delete toDel;
+
+                rmDupRecursive(head, v);
+            } else {
+                rmDupRecursive(head->next, v);
             }
         }
     }
