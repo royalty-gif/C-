@@ -1,5 +1,5 @@
 
-#include "bubble.hpp"
+#include "bubble_sort.hpp"
 #include <iostream>
 
 int main() {
