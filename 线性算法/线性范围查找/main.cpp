@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <stack>
-#include <vector>
 #include <memory>
 
 struct Pos {
