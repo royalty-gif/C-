@@ -62,7 +62,7 @@ int lockNum(const std::string& target, const std::unordered_set<std::string>& fo
         for(int i = 0; i <len; i++) {
             std::string s = queue.front();
             queue.pop();
-            
+
             if( (forbidden.find(s) == forbidden.end()) && visit.find(s) == visit.end() ) {
                 std::array<std::string, 8> neighbor = makeNeighbor(s);
                 visit.emplace(s);
